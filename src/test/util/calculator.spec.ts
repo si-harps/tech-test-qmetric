@@ -26,4 +26,8 @@ describe('Util: calculator', () => {
   test('adding single product to basket', () => {
     expect(basketCalulator([product])).toEqual(product.price);
   });
+
+  test('adding invalid product to basket', () => {
+    expect( () => basketCalulator(1)).toThrow('Invalid product');
+  });
 });
