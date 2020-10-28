@@ -72,4 +72,14 @@ describe('Util: calculator', () => {
   test('discounted product value prior to threshold', () => {
     expect(savingsCalculator([discountedProduct])).toEqual([]);
   });
+
+  test('discount requirement one: single discount applied', () => {
+    const saving = savingsCalculator([...Array(2).keys()].map( () => discountedProduct));
+    expect(saving[0].value).toEqual(1);
+  });
+
+  test('discount requirement one: double discount applied', () => {
+    const saving = savingsCalculator([...Array(4).keys()].map( () => discountedProduct));
+    expect(saving[0].value).toEqual(2);
+  });
 });
