@@ -36,3 +36,13 @@ ul {
 .clickable {
   cursor: pointer;
 }
+
+@media (min-width: 600px) {
+  .toolbar { width: 100%; }
+  .wrapper { width: 100%; }
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 900px) {
+  .grid { grid-template-columns: repeat(3, 1fr); }
+}
