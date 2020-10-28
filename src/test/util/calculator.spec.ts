@@ -1,5 +1,5 @@
 import '@testing-library/react';
-import { basketCalulator, aggregateSavings } from './../../util/calculator';
+import { basketCalulator, aggregateSavings, savingsCalculator } from './../../util/calculator';
 import { Product } from './../../types/product';
 
 describe('Util: calculator', () => {

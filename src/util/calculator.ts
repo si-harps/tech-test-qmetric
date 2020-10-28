@@ -1,4 +1,5 @@
-import { Product } from '../types/product';
+import { Product } from './../types/product';
+import { Saving } from './../types/basket';
 
 export const basketCalulator = (list: Product[]): number => {
 
@@ -6,6 +7,10 @@ export const basketCalulator = (list: Product[]): number => {
     throw new Error('Invalid product');
 
   return list.reduce( (acc, item) => acc + item.price, 0);
+}
+
+export const savingsCalculator = (list: Product[]): Saving[] => {
+  return [];
 }
 
 export const aggregateSavings = (list: Product[]) => {
