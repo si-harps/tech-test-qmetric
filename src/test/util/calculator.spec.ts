@@ -1,11 +1,12 @@
 import '@testing-library/react';
-import { basketCalulator } from './../../util/calculator';
+import { basketCalulator, aggregateSavings } from './../../util/calculator';
 import { Product } from './../../types/product';
 
 describe('Util: calculator', () => {
 
   let product: Product,
-    newProduct: Product;
+    newProduct: Product,
+    discountedProduct: Product;
 
   beforeEach( () => {
 
@@ -25,6 +26,16 @@ describe('Util: calculator', () => {
       price: 15,
       unit: 1,
       discount: 0,
+      aggregate: false,
+      measurement: false
+    }
+
+    discountedProduct = {
+      id: 3,
+      name: 'Test Product',
+      price: 2.5,
+      unit: 1,
+      discount: 1,
       aggregate: false,
       measurement: false
     }
@@ -49,4 +60,8 @@ describe('Util: calculator', () => {
   test('adding multiple different products to basket', () => {
     expect(basketCalulator([product, newProduct])).toEqual(product.price + newProduct.price);
   });
+
+  test('aggregation of non discounted products prior to applying savings', () => {
+    expect(aggregateSavings([product, product])).toMatchObject({});
+  })
 });
