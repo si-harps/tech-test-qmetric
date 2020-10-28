@@ -10,5 +10,21 @@ export const basketCalulator = (list: Product[]): number => {
 
 export const aggregateSavings = (list: Product[]) => {
 
-  return null
+  const productMap: any = {};
+
+  for (let product of list) {
+
+    let discount = product.discount;
+
+    if (!discount)
+      continue;
+    
+    if (!productMap[discount]) {
+      productMap[discount] = 1;
+    } else {
+      ++productMap[discount]
+    }
+  }
+
+  return productMap;
 }
