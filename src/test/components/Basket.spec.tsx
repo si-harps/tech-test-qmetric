@@ -49,8 +49,8 @@ describe('Basket', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  // test('renders basket component with base text', () => {
-  //   const { getByText } = render(<Provider store={store}><Basket /></Provider>);
-  //   expect(getByText(/[A-Za-z]/)).not.toBeNull();
-  // });
+  test('renders basket component with base text', () => {
+    const { getByText } = render(<Provider store={store}><Basket /></Provider>);
+    expect(getByText(/[A-Za-z]/)).not.toBeNull();
+  });
 });

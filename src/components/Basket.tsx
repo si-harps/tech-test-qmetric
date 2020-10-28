@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import { BasketState } from './../types/basket';
+import { BasketList } from './';
 
 const Basket: React.FC = () => {
 
@@ -19,7 +20,7 @@ const Basket: React.FC = () => {
   
   return (
     <div className="basket">
-      Basket Items
+      <BasketList list={list} />
     </div>
   )
 }

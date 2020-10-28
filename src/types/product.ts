@@ -10,6 +10,10 @@ export interface Product {
   measurement: string | boolean;
 }
 
+export interface AggregatedProduct extends Product {
+  units: number;
+}
+
 export interface ProductListState {
   list: Product[];
   mounted: Product | null;
