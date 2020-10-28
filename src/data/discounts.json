@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "name": "Face Masks 2 for £4",
+    "threshold": 2,
+    "apply": 1
+  }, 
+  {
+    "id": 2,
+    "name": "Toilet Paper 6 for 5",
+    "threshold": 6,
+    "apply": 0.65
+  }
+]

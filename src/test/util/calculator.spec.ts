@@ -66,8 +66,7 @@ describe('Util: calculator', () => {
   });
 
   test('aggregation of discounted products prior to applying savings', () => {
-    const expectedAggregation = { 1: 2 };
-    expect(aggregateSavings([discountedProduct, discountedProduct])).toMatchObject(expectedAggregation);
+    expect(aggregateSavings([discountedProduct, discountedProduct])).toMatchObject({ 1: 2});
   });
 
   test('discounted product value prior to threshold', () => {
