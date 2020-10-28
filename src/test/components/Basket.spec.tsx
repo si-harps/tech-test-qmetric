@@ -15,7 +15,7 @@ describe('Basket', () => {
 
   beforeEach( () => {
 
-    let basket: BasketState = {
+    const basket: BasketState = {
       list: [],
       subtotal: 0,
       savings: [],
@@ -23,7 +23,7 @@ describe('Basket', () => {
       total: 0
     }
 
-    let initialState = {
+    const initialState = {
       basket
     }
 

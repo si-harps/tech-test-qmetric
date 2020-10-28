@@ -1,5 +1,6 @@
 import * as ActionTypes from './../constants/ActionTypes';
 import { BasketState, BasketActionTypes } from './../types/basket';
+import { basketCalulator, savingsCalculator } from '../util/calculator';
 
 const initialState = {
   list: [],
@@ -14,16 +15,64 @@ const basketReducer = (
   action: BasketActionTypes
 ): BasketState => {
 
+  let list,
+    subtotal,
+    savings,
+    totalSavings;
+
   switch (action.type) {
     
-    case ActionTypes.ADD_TO_BASKET:      
-      return state;
+    case ActionTypes.ADD_TO_BASKET:
+      
+      const units = action.data.aggregate
+        ? Math.round(action.units / action.data.unit)
+        : action.units;
+      
+      list = state.list.concat([...Array(units).keys()].map( () => action.data ));
+      subtotal = basketCalulator(list);
+      savings = savingsCalculator(list);
+      totalSavings = savings.reduce( (acc, saving) => acc + saving.value, 0);
+
+      return {
+        list: list.sort( (a, b) => a.id - b.id),
+        subtotal,
+        savings,
+        totalSavings,
+        total: subtotal - totalSavings
+      }
 
     case ActionTypes.REMOVE_FROM_BASKET:
-      return state;
+
+      const productId = action.data.id;
+      const indexFrom = state.list.findIndex( product => product.id === productId);
+      
+      list = state.list.filter( (_, i) => i !== indexFrom);
+      subtotal = basketCalulator(list);
+      savings = savingsCalculator(list);
+      totalSavings = savings.reduce( (acc, saving) => acc + saving.value, 0);
+
+      return {
+        list: list.sort( (a, b) => a.id - b.id),
+        subtotal,
+        savings,
+        totalSavings,
+        total: subtotal - totalSavings
+      }
     
     case ActionTypes.REMOVE_ITEM_FROM_BASKET:
-      return state;
+
+      list = state.list.filter( product => product.id !== action.data.id);
+      subtotal = basketCalulator(list);
+      savings = savingsCalculator(list);
+      totalSavings = savings.reduce( (acc, saving) => acc + saving.value, 0);
+
+      return {
+        list: list.sort( (a, b) => a.id - b.id),
+        subtotal,
+        savings,
+        totalSavings,
+        total: subtotal - totalSavings
+      }
 
     default: 
       return state
