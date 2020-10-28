@@ -22,4 +22,8 @@ describe('Util: calculator', () => {
   test('initial basket state, no products added', () => {
     expect(basketCalulator([])).toEqual(0);
   });
+
+  test('adding single product to basket', () => {
+    expect(basketCalulator([product])).toEqual(product.price);
+  });
 });
