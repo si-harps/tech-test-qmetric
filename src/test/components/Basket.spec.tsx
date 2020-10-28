@@ -6,7 +6,7 @@ import { Basket } from './../../components';
 import { Product } from './../../types/product';
 import { BasketState } from './../../types/basket';
  
-describe('Basket', () => {
+describe('Components: Basket', () => {
 
   const mockStore = configureStore();
 

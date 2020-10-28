@@ -4,7 +4,7 @@ import { Card } from './../../components';
 import { Product } from './../../types/product';
 import { addToBasket, removeFromBasket, removeItemFromBasket } from './../../actions/basket';
  
-describe('Basket', () => {
+describe('Components: Card', () => {
 
   let product: Product,
     basket: Product[],

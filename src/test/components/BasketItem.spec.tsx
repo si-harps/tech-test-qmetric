@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import { BasketItem } from './../../components';
 import { AggregatedProduct } from './../../types/product';
 
-describe('Component: NavigationToolbar', () => {
+describe('Component: BasketItem', () => {
 
   let product: AggregatedProduct;
 
