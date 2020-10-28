@@ -1,7 +1,9 @@
 import React, { useState, MouseEvent } from 'react';
+import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Popover, IconButton, Typography, Badge } from '@material-ui/core';
 import { ShoppingCartOutlined } from '@material-ui/icons';
+import { Basket } from './';
 
 const useStyles = makeStyles( theme => ({
   root: {
@@ -23,6 +25,7 @@ const NaviationToolbar: React.FC = () => {
 
   const classes = useStyles();
   const [ anchorEl, setAnchorEl ] = useState<HTMLElement | null>(null);
+  const { list } = useSelector( state => state.basket);
 
   const handleClick = (e: MouseEvent<HTMLElement>) => {
     setAnchorEl(e.currentTarget);
@@ -33,9 +36,7 @@ const NaviationToolbar: React.FC = () => {
   };
 
   const open = Boolean(anchorEl);
-  const id = open 
-    ? 'basket' 
-    : undefined;
+  const id = open ? 'basket' : undefined;
 
   return (
     <div className={classes.root}>
@@ -45,7 +46,7 @@ const NaviationToolbar: React.FC = () => {
             Products
           </Typography>
           <IconButton aria-describedby={id} className={classes.basketButton} onClick={handleClick}>
-            <Badge badgeContent={0} color="secondary">
+            <Badge badgeContent={list.length} color="secondary">
               <ShoppingCartOutlined />
             </Badge>
           </IconButton>
@@ -57,7 +58,7 @@ const NaviationToolbar: React.FC = () => {
             anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
             transformOrigin={{ vertical: 'top', horizontal: 'center' }}
           >
-            QMetric
+            <Basket />
           </Popover>
         </Toolbar>
       </AppBar>
