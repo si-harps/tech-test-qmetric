@@ -37,12 +37,78 @@ ul {
   cursor: pointer;
 }
 
+.basket {
+  width: 500px;
+  padding: 20px;
+  background: white;
+}
+
+.basket li {
+  display: flow-root;
+}
+
+.basket-row {
+  clear: both;
+  display: flow-root;
+}
+
+.basket-row span {
+  display: block;
+  clear: both;
+  padding: 5px 0;
+}
+
+.basket-row span.basket-info {
+  float: left;
+  clear: none;
+}
+
+.pull-right {
+  float: right !important;
+}
+
+.pull-left {
+  float: left;
+}
+
+.basket-picker {
+  float: left;
+  padding: 5px 0 0 20px;
+}
+
+.basket-picker .units {
+  display: inline-block;
+  padding: 0 10px;
+  text-align: center;
+  border: 1px solid #bbb;
+}
+
+.basket-picker button {
+  display: inline-block;
+}
+
+.divider {
+  padding: 20px 0 0;
+  margin: 0 0 20px;
+  border-bottom: 1px dashed #bbb;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.success {
+  background-color: #5cb85c;
+}
+
 @media (min-width: 600px) {
   .toolbar { width: 100%; }
   .wrapper { width: 100%; }
   .grid { grid-template-columns: repeat(2, 1fr); }
+  .basket { width: auto; }
 }
 
 @media (min-width: 900px) {
   .grid { grid-template-columns: repeat(3, 1fr); }
+  .basket { width: 400px; }
 }
