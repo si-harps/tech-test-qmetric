@@ -64,9 +64,13 @@ describe('Util: calculator', () => {
   test('aggregation of non discounted products prior to applying savings', () => {
     expect(aggregateSavings([product, product])).toMatchObject({});
   });
-  
+
   test('aggregation of discounted products prior to applying savings', () => {
     const expectedAggregation = { 1: 2 };
     expect(aggregateSavings([discountedProduct, discountedProduct])).toMatchObject(expectedAggregation);
+  });
+
+  test('discounted product value prior to threshold', () => {
+    expect(savingsCalculator([discountedProduct])).toEqual([]);
   });
 });
