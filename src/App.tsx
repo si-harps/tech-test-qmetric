@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { CssBaseline, Container } from '@material-ui/core';
-import { NaviationToolbar } from './components';
+import { NaviationToolbar, ProductList } from './components';
 
 import './App.css';
 
@@ -10,7 +10,7 @@ const App: React.FC = () => {
     <CssBaseline />
     <NaviationToolbar />
     <Container maxWidth="lg">
-      QMetric
+      <ProductList />
     </Container>
   </Fragment>);
 }
