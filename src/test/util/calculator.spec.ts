@@ -6,7 +6,8 @@ describe('Util: calculator', () => {
 
   let product: Product,
     newProduct: Product,
-    discountedProduct: Product;
+    discountedProduct: Product,
+    discountedProductAlt: Product;
 
   beforeEach( () => {
 
@@ -36,6 +37,16 @@ describe('Util: calculator', () => {
       price: 2.5,
       unit: 1,
       discount: 1,
+      aggregate: false,
+      measurement: false
+    }
+
+    discountedProductAlt = {
+      id: 4,
+      name: 'Test Product',
+      price: 0.65,
+      unit: 1,
+      discount: 2,
       aggregate: false,
       measurement: false
     }
@@ -81,5 +92,15 @@ describe('Util: calculator', () => {
   test('discount requirement one: double discount applied', () => {
     const saving = savingsCalculator([...Array(4).keys()].map( () => discountedProduct));
     expect(saving[0].value).toEqual(2);
+  });
+
+  test('discount requirement two: single discount applied', () => {
+    const saving = savingsCalculator([...Array(6).keys()].map( () => discountedProductAlt));
+    expect(saving[0].value).toEqual(0.65);
+  });
+
+  test('discount requirement two: double discount applied', () => {
+    const saving = savingsCalculator([...Array(12).keys()].map( () => discountedProductAlt));
+    expect(saving[0].value).toEqual(1.3);
   });
 });
