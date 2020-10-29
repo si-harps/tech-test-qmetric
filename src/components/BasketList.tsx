@@ -1,6 +1,6 @@
 import React from 'react';
 import { AggregatedProduct, Product } from './../types/product';
-import { BasketItem } from './'
+import { BasketItem, BasketItemAggregated } from './'
 
 interface Props {
   list: Product[];
@@ -31,7 +31,7 @@ const BasketList: React.FC<Props> = ({ list }) => {
     <div className="basket-row">
       <ul>
         { aggregateProducts(list).map( product => product.aggregate
-          ? <BasketItem key={product.id} product={product} />
+          ? <BasketItemAggregated key={product.id} product={product} />
           : <BasketItem key={product.id} product={product} /> )}
       </ul>
     </div>
