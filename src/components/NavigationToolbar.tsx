@@ -57,6 +57,7 @@ const NaviationToolbar: React.FC = () => {
             onClose={handleClose}
             anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
             transformOrigin={{ vertical: 'top', horizontal: 'center' }}
+            className="basket-popover"
           >
             <Basket />
           </Popover>
