@@ -21,4 +21,4 @@ To invoke the suite, simply run...
 
 ### More info
 
-To assist with styling I mad euse of the excellent material UI library alongside a very basic application stylesheet. Please note, this is not how I would approach the styling a production application
+To assist with styling I made use of the excellent material UI library alongside a very basic application stylesheet. Please note, this is not how I would approach styling a production application.

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { AggregatedProduct } from './../types/product';
-import { addToBasket, removeFromBasket } from './../actions/basket';
+import { addToBasket, removeFromBasket, removeItemFromBasket } from './../actions/basket';
 
 interface Props {
   product: AggregatedProduct;
@@ -16,6 +16,7 @@ const BasketItemCounter: React.FC<Props> = ({ product }) => {
       <span className="basket-action clickable" onClick={ e => dispatch(removeFromBasket(product, product.unit))}>-</span>
       <span className="basket-count">{ product.units }</span>
       <span className="basket-action clickable"  onClick={ e => dispatch(addToBasket(product, product.unit))}>+</span>
+      <span className="basket-action clickable warning" onClick={ e => dispatch(removeItemFromBasket(product))}>x</span>
     </div>
   );
 }
