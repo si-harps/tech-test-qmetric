@@ -8,8 +8,8 @@ interface Props {
 const BasketSavings: React.FC<Props> = ({ savings }) => {
 
   return (
-    <div className="basket-row">
-      <span>Savings</span>
+    <div className="basket-row basket-savings">
+      <span className="basket-header">Savings</span>
       <ul>
         { savings.map( (saving, i) => <li key={i}>
           <span className="basket-info product-name">{ saving.name }</span> 

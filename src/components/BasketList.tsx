@@ -28,12 +28,11 @@ const BasketList: React.FC<Props> = ({ list }) => {
   }
 
   return (
-    <div className="basket-row">
-      <ul>
-        { aggregateProducts(list).map( product => product.aggregate
-          ? <BasketItemAggregated key={product.id} product={product} />
-          : <BasketItem key={product.id} product={product} /> )}
-      </ul>
+    <div className="basket-list">
+      { aggregateProducts(list).map( product => product.aggregate
+        ? <BasketItemAggregated key={product.id} product={product} />
+        : <BasketItem key={product.id} product={product} /> )
+      }
     </div>
   )
 }
