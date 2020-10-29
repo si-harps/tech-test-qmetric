@@ -29,7 +29,6 @@ interface RemoveFromBasketAction {
 interface RemoveItemFromBasketAction {
   type: typeof ActionTypes.REMOVE_ITEM_FROM_BASKET;
   data: Product;
-  units: number;
 }
 
 export type BasketActionTypes = 

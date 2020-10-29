@@ -1,13 +1,34 @@
 import React from 'react';
 import { render } from '@testing-library/react'; 
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
 import { BasketItem } from './../../components';
 import { AggregatedProduct } from './../../types/product';
+import { BasketState } from './../../types/basket';
 
 describe('Component: BasketItem', () => {
 
-  let product: AggregatedProduct;
+  const mockStore = configureStore();
+
+  let store: any,
+    product: AggregatedProduct;
 
   beforeEach( () => {
+
+    const basket: BasketState = {
+      list: [],
+      subtotal: 0,
+      savings: [],
+      totalSavings: 0,
+      total: 0
+    }
+
+    const initialState = {
+      basket
+    }
+
+    store = mockStore(initialState);
+
     product = {
       id: 1,
       name: 'Face Masks',
@@ -21,17 +42,11 @@ describe('Component: BasketItem', () => {
   });
 
   test('renders basket component', () => {
-    render(<BasketItem product={product} />);
+    render(<Provider store={store}><BasketItem product={product} /></Provider>);
   });
 
   test('matches snapshot', () => {
-    const { asFragment } = render(<BasketItem product={product} />);
+    const { asFragment } = render(<Provider store={store}><BasketItem product={product} /></Provider>);
     expect(asFragment()).toMatchSnapshot();
   });
-
-  // test('toolbar contains view title', () => {
-  //   const { getByText } = render(<BasketItem  product={product} />);
-  //   expect(getByText(`${product.name} : ${product.price}`)).not.toBeNull();
-  // });
-
 });
