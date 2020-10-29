@@ -66,12 +66,20 @@ ul {
   color: red;
 }
 
+.col-2 {
+  width: 20%;
+}
+
 .col-3 {
   width: 25%
 }
 
 .col-9 {
   width: 75%
+}
+
+.col-10 {
+  width: 80%;
 }
 
 /* Basket Specific Classes */

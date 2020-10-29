@@ -2,7 +2,7 @@ import React, { MouseEvent, useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Paper, Typography, Button, ButtonGroup } from '@material-ui/core';
 import { Product } from './../types/product';
-import { Add, Check } from '@material-ui/icons';
+import { Add, Check, Delete } from '@material-ui/icons';
 
 const useStyles = makeStyles( theme => ({
   card: {
@@ -60,7 +60,7 @@ const Card: React.FC<Props> = ({ product, basket, updateBasket, destroyProduct }
 
           { !!basketUnits && <ButtonGroup className="full-width">
               <Button
-                className="col-9" 
+                className="col-10" 
                 variant="contained" 
                 color="primary" 
                 onClick={ e => updateBasket(e, product, product.unit)}
@@ -69,12 +69,12 @@ const Card: React.FC<Props> = ({ product, basket, updateBasket, destroyProduct }
                 {`${basketUnits * product.unit} Added` }
             </Button>
             <Button
-                className="col-3" 
+                className="col-2" 
                 variant="contained" 
                 color="secondary" 
                 onClick={ e => destroyProduct(e, product)}
               >
-                x
+                <Delete />
             </Button>
           </ButtonGroup> }
 
