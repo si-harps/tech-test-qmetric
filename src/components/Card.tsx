@@ -1,6 +1,6 @@
-import React, { MouseEvent, useEffect, useState } from 'react';
+import React, { Fragment, MouseEvent, useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Paper, Typography, Button } from '@material-ui/core';
+import { Paper, Typography, Button, ButtonGroup } from '@material-ui/core';
 import { Product } from './../types/product';
 import { Add, Check } from '@material-ui/icons';
 
@@ -29,9 +29,10 @@ interface Props {
   product: Product,
   basket: Product[],
   updateBasket(e: MouseEvent, product: Product, units: number): void;
+  destroyProduct(e: MouseEvent, product: Product): void;
 }
 
-const Card: React.FC<Props> = ({ product, basket, updateBasket }) => {
+const Card: React.FC<Props> = ({ product, basket, updateBasket, destroyProduct }) => {
 
   const classes = useStyles();
   const [ basketUnits, setBasketUnits ] = useState<number>(0)
@@ -56,15 +57,37 @@ const Card: React.FC<Props> = ({ product, basket, updateBasket }) => {
         <Typography variant="h6" className={classes.title}>{ product.name }</Typography>
         <div className={classes.thumbnail} />
         <div className={classes.basketLink}>
-          <Button
-            className="full-width" 
-            variant="contained" 
-            color="primary" 
-            onClick={ e => updateBasket(e, product, product.unit)}
-            startIcon={ basketUnits ? <Check /> : <Add />}
-          >
-              { basketUnits ? `${basketUnits * product.unit} Added` : 'Add to Basket' }
-          </Button>
+
+          { !!basketUnits && <ButtonGroup className="full-width">
+              <Button
+                className="col-9" 
+                variant="contained" 
+                color="primary" 
+                onClick={ e => updateBasket(e, product, product.unit)}
+                startIcon={<Check /> }
+              >
+                {`${basketUnits * product.unit} Added` }
+            </Button>
+            <Button
+                className="col-3" 
+                variant="contained" 
+                color="secondary" 
+                onClick={ e => destroyProduct(e, product)}
+              >
+                x
+            </Button>
+          </ButtonGroup> }
+
+          { !!!basketUnits && <Button
+              className="full-width" 
+              variant="contained" 
+              color="primary" 
+              onClick={ e => updateBasket(e, product, product.unit)}
+              startIcon={<Add />}
+            >
+              Add to Basket
+          </Button> }
+
         </div>
       </Paper>
     </div>

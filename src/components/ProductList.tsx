@@ -1,7 +1,7 @@
 import React, { memo, useEffect, MouseEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from './../actions/product';
-import { addToBasket } from './../actions/basket';
+import { addToBasket, removeItemFromBasket } from './../actions/basket';
 import { Product } from './../types/product';
 import { Card } from './../components';
 
@@ -21,6 +21,11 @@ const ProductList: React.FC = () => {
     dispatch(addToBasket(product, units));
   }
 
+  const destroyProduct = (e: MouseEvent, product: Product): void => {
+    e.preventDefault();
+    dispatch(removeItemFromBasket(product));
+  }
+
   if (!products.length)
     return (<div>Loading...</div>);
 
@@ -32,6 +37,7 @@ const ProductList: React.FC = () => {
           product={product}
           basket={basket}
           updateBasket={updateBasket}
+          destroyProduct={destroyProduct}
         /> )}
       </div>
     </div>
