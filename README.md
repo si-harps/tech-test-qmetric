@@ -18,3 +18,7 @@ Rather than adding a comprehensive test suite, I have added several tests which 
 To invoke the suite, simply run...
 
 ```npm run test```
+
+### More info
+
+To assist with styling I mad euse of the excellent material UI library alongside a very basic application stylesheet. Please note, this is not how I would approach the styling a production application

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { AggregatedProduct } from './../types/product';
-import { addToBasket, removeFromBasket, removeItemFromBasket } from './../actions/basket';
+import { addToBasket, removeFromBasket } from './../actions/basket';
 
 interface Props {
   product: AggregatedProduct;

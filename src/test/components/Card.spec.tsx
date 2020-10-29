@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react'; 
 import { Card } from './../../components';
 import { Product } from './../../types/product';
-import { addToBasket, removeFromBasket, removeItemFromBasket } from './../../actions/basket';
+import { addToBasket } from './../../actions/basket';
  
 describe('Components: Card', () => {
 
