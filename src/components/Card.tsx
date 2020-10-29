@@ -1,4 +1,4 @@
-import React, { Fragment, MouseEvent, useEffect, useState } from 'react';
+import React, { MouseEvent, useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Paper, Typography, Button, ButtonGroup } from '@material-ui/core';
 import { Product } from './../types/product';
